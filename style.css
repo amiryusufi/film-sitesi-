@@ -73,7 +73,7 @@ header nav{
     align-items: center;
     justify-content: space-between;
     padding: 0px 50px;
-    margin-top: 20px;
+    margin-top: 7px;
 }
 
 header nav .logo-ul{
@@ -201,4 +201,186 @@ header .content .btns a{
     100%{
         background: linear-gradient(360deg,#00bdff, #0079ff);
     }
+}
+
+/* ! index.html icindeki populer alaninin tasarimi */
+header section{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding: 0px 50px;
+    bottom: 20px;
+    color: white;
+}
+
+header section .cards{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+header section .cards::-webkit-scrollbar{
+    display: none;
+}
+
+header section .cards .card{
+    position: relative;
+    min-width: 130px;
+    height: 180px;
+    border-radius: 8px;
+    margin-right: 10px;
+    background-color: black;
+    transition: 0.3s linear;
+}
+
+header section .cards .card .poster{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    position: relative;
+}
+
+header section .cards .card:hover{
+    min-width: 300px;
+    overflow: hidden;
+}
+
+header section .cards .card .rest_card{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+    opacity: 0;
+    transition: 1s linear;
+}
+
+header section .cards .card .rest_card img{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+header section .cards .card .rest_card::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, transparent,black);
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+header section .cards .card .rest_card .cont{
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    left: 0;
+    color: white;
+    padding: 0px 20px;
+}
+
+header section .cards .card .rest_card .cont .sub{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header section .cards .card .rest_card .cont .sub p{
+    font-size: 12px;
+    font-weight: 400;
+    color: rgb(255,255,255,0.7);
+}
+
+header section .cards .card .rest_card .cont .sub h3{
+    color: white;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+header section .cards .card .rest_card .cont .sub h3 span{
+    background-color: yellow;
+    color: black;
+    padding: 0px 3px;
+    margin: 0px 5px;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+header section .cards .card .rest_card .cont .sub h3 i{
+    margin-right: 3px;
+}
+
+header section .cards .card:hover .rest_card{
+    opacity: 1;
+}
+
+
+header section .fa-chevron-left,
+header section .fa-chevron-right{
+    position: absolute;
+    top: 50%;
+    left: 3%;
+    width: 25px;
+    height: 25px;
+    background-color: rgb(255,255,255,0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s linear;
+    z-index: 999;
+    opacity: 0;
+}
+
+header section .fa-chevron-right{
+    left: unset;
+    right: 3%;
+}
+
+header section:hover .fa-chevron-left,
+header section:hover .fa-chevron-right{
+    opacity: 1;
+}
+
+
+/* !movies syfasi tasarimi */
+
+.index-body{
+    width: 100%;
+    background-color: black;
+    font-family: "Poppins", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.movies-body header{
+    position: relative;
+    width: 80%;
+    border: 1px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+
+}
+
+.movies-body .movies-content{
+    margin-top: ;
 }
