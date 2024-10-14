@@ -87,6 +87,30 @@ header nav .logo-ul img{
     display: block;
     margin: 0 auto; 
 }
+
+header nav .logo-ul .movies-list{
+    border: 1px solid white;
+    color: white;
+    opacity: 0;
+    position: absolute;
+    top: 30px;
+    left: 280px;
+    background-color: black;
+    z-index: 10;
+    padding: 5px;
+}
+
+header nav .logo-ul li:hover .movies-list{
+    opacity: 1;
+}
+header nav .logo-ul li:hover .movies-list p{
+    cursor: pointer;
+}
+header nav .logo-ul li:hover .movies-list p:hover{
+    color: gray;
+}
+
+
 header nav .logo-ul ul{
     display: flex;
     align-items: center;
@@ -362,14 +386,14 @@ header section:hover .fa-chevron-right{
 
 /* !movies syfasi tasarimi */
 
-.index-body{
+.movies-body{
     width: 100%;
     background-color: black;
     font-family: "Poppins", serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 50px;
+    padding: 50px 50px; /* Üst ve alt için 50px, sağ ve sol için 50px boşluk */
 }
 
 .movies-body header{
@@ -378,9 +402,62 @@ header section:hover .fa-chevron-right{
     border: 1px solid white;
     border-radius: 20px;
     overflow: hidden;
-
+    margin: 20px 0; /* Üst ve alt boşluk */
 }
 
 .movies-body .movies-content{
-    margin-top: ;
+    margin-top: 50px;
 }
+
+.movies-content .popular{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Aralarındaki boşluk artacak */
+    align-items: center;
+    gap: 20px; /* Kartlar arası boşluk artırıldı */
+}
+
+.movies-content .popular .movie-card{
+    width: 22%; /* Kartların genişliğini biraz küçülttük */
+    border: 1px solid white;
+    margin: 10px; /* Kartların dışına boşluk ekledik */
+}
+
+.movies-content .popular .movie-card img{
+    width: 100%;
+    height: 300px;
+    cursor: pointer;
+}
+
+.movies-content .popular .movie-card .movie-info{
+    text-align: center;
+    color: white;
+    padding: 15px;
+    background: linear-gradient(45deg,black,white);
+}
+
+.movies-content .popular .movie-card .movie-info h4{
+    text-transform: uppercase;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.movies-content .popular .movie-card .movie-info p{
+    font-size: 12px;
+}
+
+.movies-content .popular .movie-card .movie-info h6{
+    color: white;
+    margin-top: 5px;
+}
+
+.movies-content .popular .movie-card .movie-info span{
+    background-color: yellow;
+    padding: 3px;
+    margin-right: 3px;
+    color: black;
+    border-radius: 2px;
+}
+
