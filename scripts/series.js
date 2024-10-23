@@ -27,10 +27,18 @@ const diziBilgileriniGoster = (data) => {
             year: "numeric"
         });
 
+        let posterpath;
+
+        if(veri.poster_path){
+            posterpath = `${imageUrl}${veri.poster_path}`
+        }else if(veri.poster_path == null || veri.poster_path == ""){
+            posterpath = `https://www.reelviews.net/resources/img/default_poster.jpg`
+        }
+
         const genreName = veri.genre_ids.map((id) => genresMap[id]).slice(0, 2);
 
         serieCard.innerHTML = `
-        <img src="${imageUrl}${veri.poster_path}" alt="">
+        <img src="${posterpath}" alt="">
         <div class="serie-info">
             <h4>${veri.name}</h4>
             <p>${genreName}</p>
@@ -63,3 +71,31 @@ fetch(popularSeries)
     .then((data) => {
         diziBilgileriniGoster(data);
     });
+
+// ! dizi aratmak icin;
+    const searchInput = document.querySelector("#searchInput");
+
+    const dizileriFiltrele = () => {
+        searchInput.addEventListener("input", function(){
+            const searchTerm = searchInput.value.trim();
+            // console.log(searchTerm);
+
+            if(!searchTerm){
+                fetch(popularSeries)
+                .then(response=>response.json())
+                .then((data)=>{
+                    diziBilgileriniGoster(data);
+                })
+                return;
+            }
+        
+            fetch(`https://api.themoviedb.org/3/search/tv?query=${searchTerm}&api_key=${apiKey}`)
+            .then(response=>response.json())
+            .then((data)=>{
+                seriesWrapper.innerHTML = "";
+                diziBilgileriniGoster(data);
+            })
+        })
+    }
+    
+    dizileriFiltrele();

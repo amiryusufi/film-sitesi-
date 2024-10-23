@@ -42,7 +42,14 @@ fetch(topratedFilms)
 
 const filmBilgileriniYazdir = (data) => {
     data.results.forEach((veri) => {
-        const posterPath = veri.poster_path;
+
+        let posterPath;
+        if(veri.poster_path){
+            posterPath = `${imageUrl}${veri.poster_path}`
+        }else if(veri.poster_path == null ||veri.poster_path == ""){
+            posterPath = "https://www.reelviews.net/resources/img/default_poster.jpg"
+        }
+       
         const genreNames = veri.genre_ids.map((id)=> genresMap[id]).slice(0,2);
         const date = new Date(veri.release_date);
         const formatteDate = date.toLocaleDateString("tr-TR", {
@@ -63,7 +70,7 @@ const filmBilgileriniYazdir = (data) => {
 
         // kart bilgilerini ayarlama
         movieCard.innerHTML = `
-        <img src="${imageUrl}${posterPath}" alt="Avengers Movie Poster">
+        <img src="${posterPath}" alt="Avengers Movie Poster">
                     <div class="movie-info">
                         <h4>${veri.title}</h4>
                         <p>${genreNames}</p>
@@ -121,3 +128,25 @@ const enCokOyAlanFimlmleriYazdir = () => {
         filmBilgileriniYazdir(data);
     })
 }
+// input icerisinden film aratamk icn;
+const searchInput = document.querySelector("#searchInput");
+
+const filmleriFiltrele = () => {
+    searchInput.addEventListener("input", function(){
+        const searchTerm = searchInput.value.trim();
+
+        if(searchTerm == ""){
+            filmBilgileriniYazdir(data);
+        }else{
+            fetch(`https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${apiKey}`)
+            .then(response=>response.json())
+            .then((data)=>{
+                console.log(data)
+                moviesWrapper.innerHTML = "";
+                filmBilgileriniYazdir(data)
+            })
+        }
+    })
+}
+
+filmleriFiltrele();
