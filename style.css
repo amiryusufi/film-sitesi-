@@ -4,19 +4,22 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .index-body{
     width: 100%;
     height: 100vh;
     background-color: black;
-    font-family: "poppins", sans-serif;
+    font-family: "Poppins", serif;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+
 #preloader{
-    background: black url("img/loader.gif") center center no-repeat;
+    background: black url("img/loader.gif") no-repeat center center;
     background-size: 20%;
     height: 100vh;
     width: 100%;
@@ -61,7 +64,7 @@ header::after{
 
 header video{
     position: absolute;
-    top: -28%;
+    top: -20%;
     left: 0;
     z-index: -1;
 }
@@ -73,22 +76,17 @@ header nav{
     align-items: center;
     justify-content: space-between;
     padding: 0px 50px;
-    margin-top: 7px;
 }
 
-header nav .logo-ul{
+header nav .logo_ul{
     display: flex;
-
-}
-header nav .logo-ul img{
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    display: block;
-    margin: 0 auto; 
 }
 
-header nav .logo-ul .movies-list{
+header nav .logo_ul img{
+    width: 90px;
+}
+
+header nav .logo_ul .movies-list{
     border: 1px solid white;
     color: white;
     opacity: 0;
@@ -98,8 +96,8 @@ header nav .logo-ul .movies-list{
     background-color: black;
     z-index: 10;
     padding: 5px;
-    display: none;
 }
+
 header nav #searchInput{
     width: 200px;
     height: 30px;
@@ -116,39 +114,40 @@ header nav #searchInput::placeholder{
     color: white;
 }
 
-header nav .logo-ul li:hover .movies-list{
+header nav .logo_ul li:hover .movies-list{
     opacity: 1;
-    display: block;
 }
-header nav .logo-ul li:hover .movies-list p{
+
+header nav .logo_ul li:hover .movies-list p{
     cursor: pointer;
 }
-header nav .logo-ul li:hover .movies-list p:hover{
-    color: gray;
+
+header nav .logo_ul li:hover .movies-list p:hover{
+    color: grey;
 }
 
-
-header nav .logo-ul ul{
+header nav .logo_ul ul{
     display: flex;
     align-items: center;
     justify-content: center;
     list-style: none;
-
 }
-header nav .logo-ul ul li{
-    padding: 30px 15px;
 
+header nav .logo_ul ul li{
+    padding: 3px 15px;
 }
-header nav .logo-ul ul li a{
+
+header nav .logo_ul ul li a{
     text-decoration: none;
     color: white;font-size: 12px;
     font-weight: bold;
     transition: 0.3s linear;
 }
 
-header nav .logo-ul ul li a:hover{
-    color: rgb(255, 255, 255,0.7);
+header nav .logo_ul ul li a:hover{
+    color: rgb(255,255,255,0.7);
 }
+
 
 /* ! header icerisindeki content alanini kodluyoruz */
 
@@ -156,7 +155,7 @@ header .content{
     color: white;
     position: relative;
     margin-top: 50px;
-    padding-left: 50px;
+    padding-inline: 50px;
 }
 
 header .content h1{
@@ -401,7 +400,7 @@ header section:hover .fa-chevron-right{
 }
 
 
-/* !movies syfasi tasarimi */
+/* !movies ve series syfasi tasarimi */
 
 .movies-body,
 .series-body{
@@ -499,11 +498,110 @@ header section:hover .fa-chevron-right{
     border-radius: 2px;
 }
 
+/* ! navbar responsiv */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo_ul{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#menu{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#menu.show{
+    display: flex;
+}
+
+li{
+    margin-right: 20px;
+}
+
+.movies-list{
+    display: none;
+}
+
+.hamburger{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+@media screen and (max-width:780px){
+    #menu{
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        background-color: grey;
+        text-align: center;
+        padding: 10px 0;
+        transition: all 0.3s ease;
+        z-index: 1;
+        display: none;
+    }
+
+    #menu li{
+        margin: 10px 0;
+    }
+
+    .hamburger{
+        display: block;
+    }
+
+    .logo_ul{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+/* ! Anasayfa Content Alanı */
+@media screen and (max-width:800px){
+    header .content p{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:522px){
+    header .content{
+        padding-inline: 10px;
+    }
+
+    header .content p{
+        width: 100%;
+    }
+
+    header .content h1{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:435px){
+    header .content{
+        margin-top: 20px;
+    }
+
+    header .content .details h6:nth-child(1){
+        width: 100%;
+    }
+}
 
 
 
-/* ! Detay.html sayfasının tasarımı */
-.detay-body{
+
+
+/* ! Detay  ve series .html sayfasının tasarımı */
+.detay-body,
+.series-detay-body{
     width: 100%;
     background: black;
     font-family: "Poppins",sans-serif;
@@ -513,7 +611,8 @@ header section:hover .fa-chevron-right{
     padding-top: 50px;
 }
 
-.detay-body header{
+.detay-body header,
+.series-detay-body header{
     position: relative;
     width: 80%;
     border: 1px solid white;
@@ -521,17 +620,22 @@ header section:hover .fa-chevron-right{
     overflow: hidden;
 }
 
-.detay-body header .film-detay-wrapper .film-detay{
+.detay-body header .film-detay-wrapper .film-detay,
+.series-detay-body header .serie-detay-wrapper .serie-detay{
     display: flex;
     justify-content: space-between;
     color: white;
 }
 
-.detay-body header .film-detay-wrapper .film-detay .film-bilgileri{
+
+
+.detay-body header .film-detay-wrapper .film-detay .film-bilgileri,
+.series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri{
     margin: 50px 20px;
 }
 
-.detay-body header .film-detay-wrapper .film-detay .film-bilgileri h2{
+.detay-body header .film-detay-wrapper .film-detay .film-bilgileri h2,
+.series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri h2{
     font-size: 45px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -539,32 +643,36 @@ header section:hover .fa-chevron-right{
     margin-bottom: 10px;
 }
 
-.detay-body header .film-detay-wrapper .film-detay .film-bilgileri strong{
+.detay-body header .film-detay-wrapper .film-detay .film-bilgileri strong,
+.series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri strong{
     color: wheat;
     margin-right: 10px;
 }
 
-.detay-body header .film-detay-wrapper .film-detay .film-bilgileri p{
+.detay-body header .film-detay-wrapper .film-detay .film-bilgileri p,
+.series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri p{
     font-style: italic;
     margin: 10px 0px;
 }
 
-.detay-body header .film-detay-wrapper .film-detay .fragman-izle-btn{
+.detay-body header .film-detay-wrapper .film-detay .fragman-izle-btn,
+.series-detay-body header .serie-detay-wrapper .serie-detay .fragman-izle-btn{
     color: white;
     background-color: wheat;
     border: none;
     padding: 3px 5px;
     cursor: pointer;
     transition: all 0.3s linear;
-    border-radius: 2px;
 }
 
-.detay-body header .film-detay-wrapper .film-detay .fragman-izle-btn:hover{
+.detay-body header .film-detay-wrapper .film-detay .fragman-izle-btn:hover,
+.series-detay-body header .serie-detay-wrapper .serie-detay .fragman-izle-btn:hover{
     transform: scale(0.9);
 }
 
 
-.detay-body .oyuncular-wrapper{
+.detay-body .oyuncular-wrapper,
+.series-detay-body .oyuncular-wrapper{
     padding-inline: 50px;
     display: flex;
     flex-wrap: wrap;
@@ -573,7 +681,8 @@ header section:hover .fa-chevron-right{
     gap: 10px;
 }
 
-.detay-body .oyuncular-wrapper .oyuncu-card{
+.detay-body .oyuncular-wrapper .oyuncu-card,
+.series-detay-body .oyuncular-wrapper .oyuncu-card{
     width: 24%;
     height: 400px;
     color: white;
@@ -584,17 +693,21 @@ header section:hover .fa-chevron-right{
     text-align: center;
 }
 
-.detay-body .oyuncular-wrapper .oyuncu-card img{
+.detay-body .oyuncular-wrapper .oyuncu-card img,
+.series-detay-body .oyuncular-wrapper .oyuncu-card img{
     width: 100%;
     height: 300px;
 }
 
-.detay-body .oyuncular-wrapper .oyuncu-card strong{
+
+.detay-body .oyuncular-wrapper .oyuncu-card strong,
+.series-detay-body .oyuncular-wrapper .oyuncu-card strong{
     color: wheat;
     margin-right: 5px;
 }
 
-.detay-body h3{
+.detay-body h3,
+.series-detay-body h3{
     color: white;
     text-align: center;
     font-size: 35px;
@@ -603,4 +716,149 @@ header section:hover .fa-chevron-right{
     letter-spacing: 2px;
     margin-bottom: 20px;
 }
+/* !responsiv detay */
+
+@media screen and (max-width:1065px){
+    .detay-body .oyuncular-wrapper .oyuncu-card,
+    .series-detay-body .oyuncular-wrapper .oyuncu-card{
+    width: 32%;
+    }
+}
+
+@media screen and (max-width:1045px){
+    .detay-body header .film-detay-wrapper .film-detay .detay-foto,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .detay-foto{
+        width: 300px;
+    }
+}
+
+@media screen and (max-width:920px){
+    .detay-body header .film-detay-wrapper .film-detay .film-bilgileri h2,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri h2{
+        font-size: 35px;
+    }
+
+    .detay-body header .film-detay-wrapper .film-detay .film-bilgileri p,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri p{
+    font-style: italic;
+    margin: 10px 0px;
+    text-align: justify;
+    }
+}
+
+@media screen and (max-width:835px){
+    .detay-body header .film-detay-wrapper .film-detay .detay-foto,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .detay-foto{
+        width: 250px;
+    }
+
+    .detay-body header .film-detay-wrapper .film-detay .film-bilgileri h2,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri h2{
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width:753px){
+    .detay-body .oyuncular-wrapper .oyuncu-card,
+    .series-detay-body .oyuncular-wrapper .oyuncu-card{
+    width: 45%;
+    }
+
+    .detay-body .oyuncular-wrapper .oyuncu-card,
+    .series-detay-body .oyuncular-wrapper .oyuncu-card{
+    height: 300px;
+    }    
+
+    .detay-body .oyuncular-wrapper .oyuncu-card img,
+    .series-detay-body .oyuncular-wrapper .oyuncu-card img{
+    width: 100%;
+    height: 200px;
+    }
+}
+@media screen and (max-width:670px){
+    .detay-body header .film-detay-wrapper .film-detay,
+    .series-detay-body header .serie-detay-wrapper .serie-detay{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    color: white;
+    }
+
+    .detay-body header .film-detay-wrapper .film-detay .detay-foto,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .detay-foto{
+        width: 100%;
+        height: 400px;
+    }
+
+    .detay-body header .film-detay-wrapper .film-detay .film-bilgileri,
+    .series-detay-body header .serie-detay-wrapper .serie-detay .serie-bilgileri{
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width:600px){
+    .detay-body .oyuncular-wrapper,
+    .series-detay-body .oyuncular-wrapper{
+        padding-inline: 20px;
+    }
+}
+@media screen and (max-width:484px){
+    .detay-body .oyuncular-wrapper,
+    .series-detay-body .oyuncular-wrapper{
+        padding-inline: 20px;
+    }
+
+    .detay-body .oyuncular-wrapper .oyuncu-card,
+    .series-detay-body .oyuncular-wrapper .oyuncu-card{
+    width: 90%;
+    }
+}
+
+
+
+
+/* !movies ve siries responsiv */
+@media screen and (max-width:1000px){
+    .movies-content .popular .movie-card,
+    .series-content .popular .serie-card{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width:735px){
+    .movies-content .popular .movie-card,
+    .series-content .popular .serie-card{
+        width: 45%;
+    }
+}
+
+@media screen and (max-width:500px){
+    .movies-content .popular .movie-card,
+    .series-content .popular .serie-card{
+        width: 45%;
+    }
+
+    .movies-content .popular .movie-card img,
+    .series-content .popular .serie-card img{
+        height: 200px;
+    }
+
+    .movies-content .popular .movie-card .movie-info p,
+    .series-content .popular .serie-card .serie-info p{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+@media screen and (max-width:370px){
+    .movies-content .popular .movie-card,
+    .series-content .popular .serie-card{
+        width: 90%;
+    }
+}
+
+
+
 

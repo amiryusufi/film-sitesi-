@@ -27,21 +27,14 @@
     <header>
         <video id="index-video" src="video/johnwick.webm" autoplay muted loop></video>
         <nav>
-            <div class="logo-ul">
+            <div class="logo_ul">
                 <img src="img/logo.png" alt="">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="movies..html">Movies</a>
-                    </li>
-                    <li>
-                        <a href="series.html">series</a>
-                    </li>
-                    <li>
-                        <a href="">kids</a>
-                    </li>
+                <div class="hamburger" id="hamburger">&#9776;</div>
+                <ul id="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="series.html">Series</a></li>        
+                    <li><a href="movies.html">Movies</a></li>
+                    <li><a href="#">Kids</a></li>
                 </ul>
             </div>
         </nav>
@@ -92,7 +85,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <!-- ! aos init -->
     <script>
-        Aos.init();
+        AOS.init();
     </script>
 
 
